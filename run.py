@@ -1,3 +1,4 @@
+import re
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -21,7 +22,29 @@ def get_indicator():
     """
 
     data_provided = input("Enter your indicator here:\n")
-    print(f"The data you provided is {data_provided}") 
+    return data_provided
+
+
+def check_is_indicator_valid(data_provided):
+    """
+    This function checks if the indicator
+    inputed has the valid syntax
+    """
+
+    hash_pattern = r"^[a-fA-F0-9]{32}$"
+    ip_pattern = r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"
+    dm_pattern = r"^(?!-)[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$"
+    try:
+        if (
+            re.match(hash_pattern, data_provided)
+            or re.match(ip_pattern, data_provided)
+            or re.match(dm_pattern, data_provided)
+        ):
+            return True
+    except ValueError:
+        print("Invalid input")
 
 
 get_indicator()
+validity = check_is_indicator_valid
+validity(check_is_indicator_valid)
