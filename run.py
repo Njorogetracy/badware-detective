@@ -31,7 +31,7 @@ def check_is_indicator_valid(data_provided):
     inputed has the valid syntax
     """
 
-    hash_pattern = r"^[a-fA-F0-9]{32}$"
+    hash_pattern = r"^[a-fA-F0-9]{32}+$"
     ip_pattern = r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"
     dm_pattern = r"^(?!-)[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$"
     try:
@@ -43,6 +43,13 @@ def check_is_indicator_valid(data_provided):
             return True
     except ValueError:
         print("Invalid input")
+
+    while True:
+        data_provided = get_indicator()
+        if check_is_indicator_valid(data_provided):
+            break
+        else:
+            print("Input does not match the pattern try again")
 
 
 get_indicator()
