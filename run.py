@@ -32,9 +32,18 @@ def check_is_indicator_valid(data_provided):
     """
 
     hash_pattern = r"^[a-fA-F0-9]{32}$"
-    ip_pattern = r"^(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$"
+    ip_pattern = (
+        r"^(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)"
+        r"(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$"
+    )
     # exception="^(0\.0\.0\.0)|(255\.255\.255\.255)$"
-    dm_pattern = r"^((?!-)[A-Za-z0-9-]{1, 63}(?<!-)\.)+[A-Za-z]{2, 6}$"
+    dm_pattern = (
+        r'^[a-zA-Z0-9]'
+        r'([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?'
+        r'(\.[a-zA-Z0-9]([a-zA-Z0-9\-]){0,61}'
+        r'[a-zA-Z0-9])*'
+        r'(\.[a-zA-Z]{2,6}){1}$'
+    )
     if (
         re.match(hash_pattern, data_provided)
             or re.match(ip_pattern, str(data_provided))
