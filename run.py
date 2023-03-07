@@ -31,27 +31,33 @@ def check_is_indicator_valid(data_provided):
     inputed has the valid syntax
     """
 
-    hash_pattern = r"^[a-fA-F0-9]{32}+$"
-    ip_pattern = r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}"
-    dm_pattern = r"^(?!-)[A-Za-z0-9-]+([\\-\\.]{1}[a-z0-9]+)*\\.[A-Za-z]{2,6}$"
-    try:
-        if (
-            re.match(hash_pattern, data_provided)
-            or re.match(ip_pattern, data_provided)
-            or re.match(dm_pattern, data_provided)
-        ):
-            return True
-    except ValueError:
-        print("Invalid input")
+    hash_pattern = r"^[a-fA-F0-9]{32}$"
+    ip_pattern = r"^(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$"
+    # exception="^(0\.0\.0\.0)|(255\.255\.255\.255)$"
+    dm_pattern = r"^((?!-)[A-Za-z0-9-]{1, 63}(?<!-)\.)+[A-Za-z]{2, 6}$"
+    if (
+        re.match(hash_pattern, data_provided)
+            or re.match(ip_pattern, str(data_provided))
+            or re.match(dm_pattern, str(data_provided))
+    ):
+        return True
+    else:
+        return False
 
-    while True:
-        data_provided = get_indicator()
-        if check_is_indicator_valid(data_provided):
-            break
-        else:
-            print("Input does not match the pattern try again")
+    # try:
+    #     if (
+    #         re.match(hash_pattern, data_provided)
+    #         or re.match(ip_pattern, data_provided)
+    #         or re.match(dm_pattern, data_provided)
+    #     ):
+    #         return True
+    # except ValueError:
+    #     return False
 
 
-get_indicator()
-validity = check_is_indicator_valid
-validity(check_is_indicator_valid)
+while True:
+    loaded_indicator = get_indicator()
+    if check_is_indicator_valid(loaded_indicator):
+        break
+    else:
+        print("Invalid Input")
