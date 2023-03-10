@@ -1,8 +1,7 @@
 import re
 import gspread
 from google.oauth2.service_account import Credentials
-# import json
-from pprint import pprint
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -16,8 +15,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('badware_detective')
 
 indicators = SHEET.worksheet('indicators')
-datasheet_Values = indicators.get_all_values()
-# pprint(datasheet_Values)
+datasheet_Values = indicators.get_all_records()
 
 
 def get_indicator():
@@ -72,25 +70,25 @@ def is_indicator_in_database(data_provided):
     is present in the database and returns the information,
     of the indicator type and value from the database
     """
-    data = SHEET.worksheet("indicators")
-    search_for_indicator = data.get_all_records()
-    # pprint(search_for_indicator[1][1])
-    # pprint(search_for_indicator)
-    for x in range(len(search_for_indicator)):
-        if x == data_provided:
-            pprint(x)
+
+    result = [sub['Indicator Value'] for sub in datasheet_Values]
+    for x in range(len(result)):
+        if data_provided == result[x]:
+            print(f'Match found at position {x+1}')
             break
-        else:
-            print("not found")
-    # if data_provided in search_for_indicator:
-    #     print("Indicator is present")
-    #     # indicator_present = data.cell(search_for_indicator)
-    #     # index(data_provided) + 1, 2).value
-    #     # print(indicator_present)
-    # else:
-    #     print("Indicator not present in database")
+    for dictionary in datasheet_Values:
+        for key, value in dictionary.items():
+            if value == data_provided:
+                final_result = str(dictionary)
+                break
+    final_result = final_result.replace("{", "")
+    final_result = final_result.replace("}", "")
+    final_result = final_result.replace(", ", "\n")
+    final_result = final_result.replace("'", "")
+    final_result = final_result.replace("[dropped by decoy app]", "")
+    print(final_result)
 
 
 loaded_indicator = get_indicator()
-valid_indicator = check_is_indicator_valid(loaded_indicator)
-is_indicator_in_database(valid_indicator)
+check_is_indicator_valid(loaded_indicator)
+is_indicator_in_database(loaded_indicator)
