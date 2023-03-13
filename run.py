@@ -85,10 +85,48 @@ def is_indicator_in_database(data_provided):
     final_result = final_result.replace("}", "")
     final_result = final_result.replace(", ", "\n")
     final_result = final_result.replace("'", "")
-    final_result = final_result.replace("[dropped by decoy app]", "")
     print(final_result)
 
 
-loaded_indicator = get_indicator()
-check_is_indicator_valid(loaded_indicator)
-is_indicator_in_database(loaded_indicator)
+def add_indicator(data_provided):
+    """
+    This function adds the new indicators,
+    from the user to the database
+    """
+    datasheet_Values.append_row(data_provided)
+    print("Database updated")
+
+
+if __name__ == "__main__":
+    print(r"""
+  _   _   _   _   _   _   _     _   _  
+ / \ / \ / \ / \ / \ / \ / \   / \ / \ 
+( W | E | L | C | O | M | E ) ( T | O )
+ \_/ \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/ 
+  _   _   _   _   _   _   _  
+ / \ / \ / \ / \ / \ / \ / \ 
+( B | A | D | W | A | R | E )
+ \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
+  _   _   _   _   _   _   _   _   _  
+ / \ / \ / \ / \ / \ / \ / \ / \ / \ 
+( D | E | T | E | C | T | I | V | E )
+ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
+
+    """)
+    option = input("""Choose from the options below:
+    1. Search database for indicator
+    2. Add new indicator to database
+    """)
+    while True:
+        match option:
+            case 1:
+                get_indicator()
+            case 2:
+                get_indicator()
+            case default:
+                print("Exit 0.")
+    # Case statement
+    # loaded_indicator = get_indicator()
+    # check_is_indicator_valid(loaded_indicator)
+    # is_indicator_in_database(loaded_indicator)
+    # add_indicator(loaded_indicator)
