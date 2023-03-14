@@ -58,7 +58,7 @@ def check_is_indicator_valid(data_provided):
     except ValueError:
         return False
     while True:
-        if check_is_indicator_valid(loaded_indicator):
+        if check_is_indicator_valid(data_provided):
             break
         else:
             print("Invalid Input")
@@ -72,9 +72,9 @@ def is_indicator_in_database(data_provided):
     """
 
     result = [sub['Indicator Value'] for sub in datasheet_Values]
-    for x in range(len(result)):
-        if data_provided == result[x]:
-            print(f'Match found at position {x+1}')
+    for val in range(len(result)):
+        if data_provided == result[val]:
+            print(f'Match found at position {val+1}')
             break
     for dictionary in datasheet_Values:
         for key, value in dictionary.items():
@@ -88,45 +88,55 @@ def is_indicator_in_database(data_provided):
     print(final_result)
 
 
-def add_indicator(data_provided):
-    """
-    This function adds the new indicators,
-    from the user to the database
-    """
-    datasheet_Values.append_row(data_provided)
-    print("Database updated")
+# def add_indicator(data_provided):
+#     """
+#     This function adds the new indicators,
+#     from the user to the database
+#     """
+#     datasheet_Values.append_row(data_provided)
+#     print("Database updated")
 
+
+def search_indicator():
+    """
+    This function runs the first program
+    option, to query the database for the
+    indicator
+    """
+    loaded_indicator = get_indicator()
+    check_is_indicator_valid(loaded_indicator)
+    is_indicator_in_database(loaded_indicator)
+
+
+def error_handler():
+    """
+    This function returns the error,
+    if the user inputs invalid option
+    """
+    print("Invalid Choice")
+
+
+def welcome():
+    """"
+    This function starts the program
+    """
+    print(r"""
+  _   _   _   _   _   _   _     _   _
+ / \ / \ / \ / \ / \ / \ / \   / \ / \
+( W | E | L | C | O | M | E ) ( T | O )
+ \_/ \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/
+  _   _   _   _   _   _   _
+ / \ / \ / \ / \ / \ / \ / \
+( B | A | D | W | A | R | E )
+ \_/ \_/ \_/ \_/ \_/ \_/ \_/
+  _   _   _   _   _   _   _   _   _
+ / \ / \ / \ / \ / \ / \ / \ / \ / \
+( D | E | T | E | C | T | I | V | E )
+ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/
+
+    """)
+    
 
 if __name__ == "__main__":
-    print(r"""
-  _   _   _   _   _   _   _     _   _  
- / \ / \ / \ / \ / \ / \ / \   / \ / \ 
-( W | E | L | C | O | M | E ) ( T | O )
- \_/ \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/ 
-  _   _   _   _   _   _   _  
- / \ / \ / \ / \ / \ / \ / \ 
-( B | A | D | W | A | R | E )
- \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
-  _   _   _   _   _   _   _   _   _  
- / \ / \ / \ / \ / \ / \ / \ / \ / \ 
-( D | E | T | E | C | T | I | V | E )
- \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ 
-
-    """)
-    option = input("""Choose from the options below:
-    1. Search database for indicator
-    2. Add new indicator to database
-    """)
-    while True:
-        match option:
-            case 1:
-                get_indicator()
-            case 2:
-                get_indicator()
-            case default:
-                print("Exit 0.")
-    # Case statement
-    # loaded_indicator = get_indicator()
-    # check_is_indicator_valid(loaded_indicator)
-    # is_indicator_in_database(loaded_indicator)
-    # add_indicator(loaded_indicator)
+    welcome()
+    
