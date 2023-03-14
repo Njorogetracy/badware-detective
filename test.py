@@ -1,7 +1,6 @@
 import re
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
 
 
 SCOPE = [
@@ -17,7 +16,6 @@ SHEET = GSPREAD_CLIENT.open('badware_detective')
 
 indicators = SHEET.worksheet('indicators')
 datasheet_Values = indicators.get_all_records()
-# pprint(datasheet_Values)
 
 
 def get_indicator():
@@ -26,8 +24,15 @@ def get_indicator():
     Indicators to be provided should be domain name,
     IP address or File Hash
     """
+    while True:
+        print()
+        print()
 
-    data_provided = input("Enter your indicator here:\n")
+        data_provided = input("Enter your indicator here:\n")
+
+        if check_is_indicator_valid(data_provided):
+            break
+
     return data_provided
 
 
@@ -42,7 +47,6 @@ def check_is_indicator_valid(data_provided):
         r"^(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)"
         r"(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$"
     )
-    # exception="^(0\.0\.0\.0)|(255\.255\.255\.255)$"
     dm_pattern = (
         r'^[a-zA-Z0-9]'
         r'([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?'
@@ -58,24 +62,21 @@ def check_is_indicator_valid(data_provided):
         ):
             return True
     except ValueError:
+        print("Invalid data: please try again")
         return False
-    while True:
-        if check_is_indicator_valid(data_provided):
-            break
-        else:
-            print("Invalid Input")
+    
+    # while True:
+    #     if data_provided is True:
+    #         break
+    #     print("Invalid input, try again:\n")
+    #     get_indicator()
+    # while True:
+    #     if data_provided is True:
+    #         break
+    #     else:
+    #         error_handler()
+    #     get_indicator()
 
 
-def add_indicator(data):
-    """
-    This function adds the new indicators,
-    from the user to the database
-    """
-    check_is_indicator_valid(new)
-    datasheet_Values.append(data)
-    print("database updated")
-
-
-new = get_indicator()
-check_is_indicator_valid(new)
-add_indicator(new)
+answer = get_indicator()
+check_is_indicator_valid(answer)

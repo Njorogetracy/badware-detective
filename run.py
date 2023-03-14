@@ -25,7 +25,15 @@ def get_indicator():
     IP address or File Hash
     """
 
-    data_provided = input("Enter your indicator here:\n")
+    while True:
+        print()
+        print()
+
+        data_provided = input("Enter your indicator here:\n")
+
+        if check_is_indicator_valid(data_provided):
+            break
+
     return data_provided
 
 
@@ -56,12 +64,8 @@ def check_is_indicator_valid(data_provided):
         ):
             return True
     except ValueError:
+        print("Invalid data: please try again")
         return False
-    while True:
-        if check_is_indicator_valid(data_provided):
-            break
-        else:
-            print("Invalid Input")
 
 
 def is_indicator_in_database(data_provided):
@@ -137,6 +141,13 @@ def welcome():
     """)
 
 
+def goodbye():
+    """
+    This function exits the program
+    """
+    print("Thank you for using the program. Goodbye")
+
+
 def start_program():
     """"
     This function starts the program
@@ -151,19 +162,20 @@ def start_program():
             search_indicator()
         elif choice == 2:
             print("option 2 selected")
+        elif choice == 0:
+            goodbye()
+            break
         else:
             error_handler()
 
-        start_program()
         choice = int(input("""Choose from the options below:
         1. Search database for indicator
         2. Add new indicator to database
         0. Exit program\n
         """))
-    print("Thank you for using this program, goodbye!\n")
 
 
 if __name__ == "__main__":
     welcome()
     start_program()
-
+                                                                                                                       
