@@ -135,8 +135,35 @@ def welcome():
  \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/
 
     """)
-    
+
+
+def start_program():
+    """"
+    This function starts the program
+    """
+    choice = int(input("""Choose from the options below:
+    1. Search database for indicator
+    2. Add new indicator to database
+    0. Exit program\n
+    """))
+    while choice != 0:
+        if choice == 1:
+            search_indicator()
+        elif choice == 2:
+            print("option 2 selected")
+        else:
+            error_handler()
+
+        start_program()
+        choice = int(input("""Choose from the options below:
+        1. Search database for indicator
+        2. Add new indicator to database
+        0. Exit program\n
+        """))
+    print("Thank you for using this program, goodbye!\n")
+
 
 if __name__ == "__main__":
     welcome()
-    
+    start_program()
+
