@@ -145,8 +145,17 @@ def goodbye():
     """
     This function exits the program
     """
-    print("Thank you for using the program. Goodbye")
-
+    print("Would you like to exit the program?\n")
+    exit_answer = input("Enter Y for Yes or N for No\n")
+    while True:
+        if exit_answer == "Y":
+            print("Thank you for using the program. Goodbye")
+        elif exit_answer == "N":
+            start_program()
+        else:
+            print("Please enter Y or N\n")
+            exit_answer = input("Enter Y for Yes or N for No\n")
+            
 
 def start_program():
     """"
@@ -157,7 +166,7 @@ def start_program():
     2. Add new indicator to database
     0. Exit program\n
     """))
-    while choice != 0:
+    while True:
         if choice == 1:
             search_indicator()
         elif choice == 2:
