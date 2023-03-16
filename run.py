@@ -18,6 +18,27 @@ indicators = SHEET.worksheet('indicators')
 datasheet_Values = indicators.get_all_records()
 
 
+def welcome():
+    """"
+    This function starts the program
+    """
+    print(r"""
+  _   _   _   _   _   _   _     _   _
+ / \ / \ / \ / \ / \ / \ / \   / \ / \
+( W | E | L | C | O | M | E ) ( T | O )
+ \_/ \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/
+  _   _   _   _   _   _   _
+ / \ / \ / \ / \ / \ / \ / \
+( B | A | D | W | A | R | E )
+ \_/ \_/ \_/ \_/ \_/ \_/ \_/
+  _   _   _   _   _   _   _   _   _
+ / \ / \ / \ / \ / \ / \ / \ / \ / \
+( D | E | T | E | C | T | I | V | E )
+ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/
+
+    """)
+
+
 def get_indicator():
     """
     Get the indicator from the user,
@@ -42,13 +63,15 @@ def check_is_indicator_valid(data_provided):
     This function checks if the indicator
     inputed has the valid syntax
     """
+    global hash_pattern
+    global ip_pattern
+    global dm_pattern
 
     hash_pattern = r"^[a-fA-F0-9]{32}$"
     ip_pattern = (
         r"^(\b25[0-5]|\b2[0-4][0-9]|\b[01]?[0-9][0-9]?)"
         r"(\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$"
     )
-    # exception="^(0\.0\.0\.0)|(255\.255\.255\.255)$"
     dm_pattern = (
         r'^[a-zA-Z0-9]'
         r'([a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?'
@@ -85,6 +108,9 @@ def is_indicator_in_database(data_provided):
             if value == data_provided:
                 final_result = str(dictionary)
                 break
+            else:
+                print("Value not found.")
+                break
     final_result = final_result.replace("{", "")
     final_result = final_result.replace("}", "")
     final_result = final_result.replace(", ", "\n")
@@ -92,13 +118,34 @@ def is_indicator_in_database(data_provided):
     print(final_result)
 
 
-# def add_indicator(data_provided):
-#     """
-#     This function adds the new indicators,
-#     from the user to the database
-#     """
-#     datasheet_Values.append_row(data_provided)
-#     print("Database updated")
+def add_indicator(data_provided):
+    """
+    This function allows user to
+    data to the database
+    """
+    test_row = ['', '', '']
+    test_indicator = get_indicator()
+    test_row[0] = test_indicator
+
+    if re.match(hash_pattern, test_indicator):
+        test_row[1] = "MD5 hash"
+        file_name = input("Enter the file name. If uknown, enter 'N/A': ")
+        test_row[2] = file_name
+        indicators.insert_row(test_row, index=3)
+        print("Row added.")
+    elif re.match(dm_pattern, test_indicator):
+        test_row[1] = "Domain"
+        test_row[2] = "N/A"
+        indicators.insert_row(test_row, index=3)
+        print("Row added.")
+    elif re.match(ip_pattern, test_indicator):
+        test_row[1] = "IP address"
+        test_row[2] = "N/A"
+        indicators.insert_row(test_row, index=3)
+        print("Row added.")
+    else:
+        print("Invalid input.")
+        test_row[0] = ""
 
 
 def search_indicator():
@@ -110,6 +157,19 @@ def search_indicator():
     loaded_indicator = get_indicator()
     check_is_indicator_valid(loaded_indicator)
     is_indicator_in_database(loaded_indicator)
+    add_indicator(loaded_indicator)
+
+
+def append_indicator():
+    """
+    This function is the second option,
+    after start program nests and runs,
+    it allows you to add values,
+    to the database
+    """
+    loaded_indicator = get_indicator()
+    check_is_indicator_valid(loaded_indicator)
+    add_indicator(loaded_indicator)
 
 
 def error_handler():
@@ -120,27 +180,6 @@ def error_handler():
     print("Invalid Choice")
 
 
-def welcome():
-    """"
-    This function starts the program
-    """
-    print(r"""
-  _   _   _   _   _   _   _     _   _
- / \ / \ / \ / \ / \ / \ / \   / \ / \
-( W | E | L | C | O | M | E ) ( T | O )
- \_/ \_/ \_/ \_/ \_/ \_/ \_/   \_/ \_/
-  _   _   _   _   _   _   _
- / \ / \ / \ / \ / \ / \ / \
-( B | A | D | W | A | R | E )
- \_/ \_/ \_/ \_/ \_/ \_/ \_/
-  _   _   _   _   _   _   _   _   _
- / \ / \ / \ / \ / \ / \ / \ / \ / \
-( D | E | T | E | C | T | I | V | E )
- \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/
-
-    """)
-
-
 def goodbye():
     """
     This function exits the program
@@ -149,13 +188,14 @@ def goodbye():
     exit_answer = input("Enter Y for Yes or N for No\n")
     while True:
         if exit_answer == "Y":
-            print("Thank you for using the program. Goodbye")
+            print("Thank you for using the program. Goodbye!")
+            break
         elif exit_answer == "N":
             start_program()
         else:
             print("Please enter Y or N\n")
             exit_answer = input("Enter Y for Yes or N for No\n")
-            
+         
 
 def start_program():
     """"
@@ -170,7 +210,8 @@ def start_program():
         if choice == 1:
             search_indicator()
         elif choice == 2:
-            print("option 2 selected")
+            append_indicator()
+            goodbye()
         elif choice == 0:
             goodbye()
             break
@@ -187,4 +228,4 @@ def start_program():
 if __name__ == "__main__":
     welcome()
     start_program()
-                                                                                                                       
+                                                                                                               
