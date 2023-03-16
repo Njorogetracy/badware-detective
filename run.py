@@ -103,19 +103,26 @@ def is_indicator_in_database(data_provided):
         if data_provided == result[val]:
             print(f'Match found at position {val+1}')
             break
+    else:
+        print("Value not found. Add to database")
+        add_indicator(data_provided)
+
+    final_result = None
     for dictionary in datasheet_Values:
         for key, value in dictionary.items():
             if value == data_provided:
                 final_result = str(dictionary)
-                break
-            else:
-                print("Value not found")
-                break
-    final_result = final_result.replace("{", "")
-    final_result = final_result.replace("}", "")
-    final_result = final_result.replace(", ", "\n")
-    final_result = final_result.replace("'", "")
-    print(final_result)
+                final_result = final_result.replace("{", "")
+                final_result = final_result.replace("}", "")
+                final_result = final_result.replace(", ", "\n")
+                final_result = final_result.replace("'", "")
+                print(final_result)
+                goodbye()
+        if final_result is not None:
+            break
+    else:
+        print("Value not found. Add to database")
+        add_indicator(data_provided)
 
 
 def add_indicator(data_provided):
@@ -126,26 +133,29 @@ def add_indicator(data_provided):
     test_row = ['', '', '']
     test_indicator = get_indicator()
     test_row[0] = test_indicator
-
-    if re.match(hash_pattern, test_indicator):
-        test_row[1] = "MD5 hash"
-        file_name = input("Enter the file name. If uknown, enter 'N/A': ")
-        test_row[2] = file_name
-        indicators.insert_row(test_row, index=3)
-        print("Row added.")
-    elif re.match(dm_pattern, test_indicator):
-        test_row[1] = "Domain"
-        test_row[2] = "N/A"
-        indicators.insert_row(test_row, index=3)
-        print("Row added.")
-    elif re.match(ip_pattern, test_indicator):
-        test_row[1] = "IP address"
-        test_row[2] = "N/A"
-        indicators.insert_row(test_row, index=3)
-        print("Row added.")
-    else:
-        print("Invalid input.")
-        test_row[0] = ""
+    while True:
+        if re.match(hash_pattern, test_indicator):
+            test_row[1] = "MD5 hash"
+            file_name = input("Enter the file name. If uknown, enter 'N/A': ")
+            test_row[2] = file_name
+            indicators.insert_row(test_row, index=3)
+            print("Row added.")
+            break
+        elif re.match(dm_pattern, test_indicator):
+            test_row[1] = "Domain"
+            test_row[2] = "N/A"
+            indicators.insert_row(test_row, index=3)
+            print("Row added.")
+            break
+        elif re.match(ip_pattern, test_indicator):
+            test_row[1] = "IP address"
+            test_row[2] = "N/A"
+            indicators.insert_row(test_row, index=3)
+            print("Row added.")
+            break
+        else:
+            print("Invalid input.")
+            test_row[0] = ""
 
 
 def search_indicator():
@@ -158,6 +168,7 @@ def search_indicator():
     check_is_indicator_valid(loaded_indicator)
     is_indicator_in_database(loaded_indicator)
     add_indicator(loaded_indicator)
+    goodbye()
 
 
 def append_indicator():
@@ -170,6 +181,7 @@ def append_indicator():
     loaded_indicator = get_indicator()
     check_is_indicator_valid(loaded_indicator)
     add_indicator(loaded_indicator)
+    goodbye()
 
 
 def error_handler():
@@ -189,13 +201,20 @@ def goodbye():
     while True:
         if exit_answer == "Y":
             print("Thank you for using the program. Goodbye!")
+            print(r"""
+                 _____           _ _
+                |   __|___ ___ _| | |_ _ _ ___
+                |  |  | . | . | . | . | | | -_|
+                |_____|___|___|___|___|_  |___|
+                                    |___|
+            """)
             break
         elif exit_answer == "N":
             start_program()
         else:
             print("Please enter Y or N\n")
             exit_answer = input("Enter Y for Yes or N for No\n")
-         
+
 
 def start_program():
     """"
@@ -227,5 +246,4 @@ def start_program():
 
 if __name__ == "__main__":
     welcome()
-    start_program()
-                                                                                                               
+    start_program()                                                                                                         
