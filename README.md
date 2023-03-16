@@ -5,6 +5,7 @@ Created by: Hope Tracy Njoroge
 find the link to my project on Heroku here: 
 
 Find the Github repository here:
+[Badware Detective](https://github.com/Njorogetracy/badware-detective)
 
 # Introduction
 
@@ -54,14 +55,8 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
   - If it's not in the databse, they are given they option to add it to the database.
   - if they choose option 2, they can add indicator directly to the databse. 
   - Afterwhich, they are able to exit the program.
-  - a goodbye message is printed after exiting the program. 
+  - A goodbye message is printed after exiting the program. 
 
-![Welcome banner]()
-![Instructions]()
-![Program menu]()
-![Option 1]()
-![Option 2]()
-![End program]()
 
 <br>
 
@@ -88,10 +83,17 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 
 - [Google Cloud API](https://cloud.google.com/apis) - API service used
 
+- [Pep8](https://pep8ci.herokuapp.com/) - Validation service
+
 - Googlesheets - Used as the database
 
 
 <br>
+
+## Testing
+
+This was done on Pep8, no errors were found.
+![Testing Image]()
 
 ## Deployment
 
@@ -139,13 +141,23 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 
 ## Credits
 
+- [W3schools](https://www.w3schools.com/python/default.asp) 
+- [Geeks for geeks](https://www.geeksforgeeks.org/md5-hash-python/) - read on MD5Hash
+- [Geeks for geeks](https://www.geeksforgeeks.org/switch-case-in-python-replacement/) - read on dictionary mapping
+- [Geeks for geeks](https://www.geeksforgeeks.org/python-accessing-items-in-lists-within-dictionary/) - using a list of dictionaries
+- [Gspread](https://docs.gspread.org/) - gspread documentation
+- [O'REILLY](https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch08s15.html)- domain name regex
+- [Abstract api](https://www.abstractapi.com/guides/python-regex-ip-address) - IPv4 regular expressions
+- [Domain source](https://github.com/stamparm/blackbook/blob/master/blackbook.txt) - domain malware source
+- [MD5 hash source](https://github.com/citizenlab/malware-indicators/blob/master/201608_Group5/hashes.csv) - hash file malware source
+- [IP address source](https://www.projecthoneypot.org/list_of_ips.php) - IP address malware source
 
 <br>
 
 
 ## Acknowledgements
 
-- My Mentor Mitko Bachvarov, who walked me through my project idea, and gave me resources to help with different stages.
+- My Mentor Mitko Bachvarov, who walked me through my project idea, and gave me resources to guide me in the different stages.
 - Tutor support, who helped me debug my validation function.
 - My husband, who has supported me this far in my course.
-- Slack, which has been an endless pool of informational resources through this project. 
+- Slack, which has been an endless pool of informational resources throughout this project. 

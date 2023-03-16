@@ -109,7 +109,7 @@ def is_indicator_in_database(data_provided):
                 final_result = str(dictionary)
                 break
             else:
-                print("Value not found.")
+                print("Value not found")
                 break
     final_result = final_result.replace("{", "")
     final_result = final_result.replace("}", "")
