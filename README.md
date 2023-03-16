@@ -14,9 +14,9 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 
 ## [User Stories](#User-Stories)
 ## [FlowChart](#flowchart)
-## [Features](#features)
-## [Future Development](#future-development)
 ## [Design and Implementation](#design-and-implementation)
+  ### [Features](#features)
+## [Future Development](#future-development)
 ## [Technologies Used](#technologies-used)
 ## [Testing](#testing)
 ## [Deployment](#deployment)
@@ -25,7 +25,7 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 <br>
 
 ## User Stories
-### AS a player
+### AS a user:
 - I want to be able to run the program
 - I want to understand what to do through the instructions
 - I want to choose what to do when I start the program
@@ -34,14 +34,27 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 - I want to be able to add an indicator(s) to the database
 - I want to exit the program as when I am done and satisfied after performing an action 
 
+<br>
+
 ## FlowChart
  Find logic chart ![here]()
 
-## Features
+<br>
+
+## Design and Implementation
+  ### Features
 
 ### Existing Features
 
-- The program starts with a welcome message in form of a banner with the name of the program and a prompt for the user to choose the next action.
+- Program start:
+  - When the program starts, the badware-detective banner is printed.
+  - The program menu is displayed with options for the user to pick the action they'd like to perform.
+  - Once they choose an option, they are given instructions on how to write their input.
+  - If option one is choosen, they search for the indicator in the database and get all it's info if found.
+  - If it's not in the databse, they are given they option to add it to the database.
+  - if they choose option 2, they can add indicator directly to the databse. 
+  - Afterwhich, they are able to exit the program.
+  - a goodbye message is printed after exiting the program. 
 
 ![Welcome banner]()
 ![Instructions]()
@@ -50,11 +63,15 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 ![Option 2]()
 ![End program]()
 
+<br>
+
 ## Future Development
 
-- I would like to add a validation to avoid entry of duplicate values
-- I would like to add automation to detect indicator type and prefill the database
-- I would like to allow for multiple entries in the database
+- I would like to add a validation to avoid entry of duplicate values.
+- I would like to add automation to detect indicator type and prefill the database.
+- I would like to allow for multiple entries in the database.
+
+<br>
 
 ## Technologies Used
 - Git - Was used for version control, the Gitpod terminal to commit and push to GitHub.
@@ -67,6 +84,14 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 
 - [Ascii Art](https://ascii.mastervb.net/) - Was used to design the welcome banner.
 
+- [Regex101](https://regex101.com/r/fU2d35/1) - Used to verify that the regex patterns are correct.
+
+- [Google Cloud API](https://cloud.google.com/apis) - API service used
+
+- Googlesheets - Used as the database
+
+
+<br>
 
 ## Deployment
 
@@ -110,4 +135,17 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 - If you choose manual, wait for it to finish.
 - Now click the button "view"
 
+<br>
+
 ## Credits
+
+
+<br>
+
+
+## Acknowledgements
+
+- My Mentor Mitko Bachvarov, who walked me through my project idea, and gave me resources to help with different stages.
+- Tutor support, who helped me debug my validation function.
+- My husband, who has supported me this far in my course.
+- Slack, which has been an endless pool of informational resources through this project. 
