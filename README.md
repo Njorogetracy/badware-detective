@@ -95,7 +95,7 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 - Click "create app" button.
 - Go to the "settings page".
 - If you are using a creds.js file, follow the next steps:
-    1. Scrool down and find the button that says "reveal config vars" and click it.
+    1. Scroll down and find the button that says "reveal config vars" and click it.
     2. Then write "CREDS" inside the box that says "KEY".
     3. With you github open find the creds.js file and copy paste it into the box beside "KEY" that says "VALUE".
     4. Now click the "add" button.
