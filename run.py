@@ -38,6 +38,13 @@ def welcome():
 
     """)
 
+    print("Choose option 1 to query the database for malicious indicators or 2 to add indicator to database.")  # noqa
+    print("The indicator can be a Domain name, IP address(IPV4) or MD5 hash")  # noqa
+    print("Example:")
+    print("Domain name: test.com, blog.mine.com, myexample.net")
+    print("IP address: x.x.x.x where x can be a value between 0 and 255(192.1.2.165)")  # noqa
+    print("MD5 hash: a 32 digit hexadecimal value e.g. ec55d3e698d289f2afd663725127bace\n")  # noqa
+
 
 def get_indicator():
     """
@@ -47,13 +54,6 @@ def get_indicator():
     """
 
     while True:
-        print("Please add your indicator.")
-        print("The indicator can be a Domain name, IP address(IPV4) or MD5 hash")  # noqa
-        print("Example:")
-        print("Domain name: test.com, blog.mine.com, myexample.net")
-        print("IP address: x.x.x.x where x can be a value between 0 and 255(192.1.2.165)")  # noqa
-        print("MD5 hash: a 32 digit hexadecimal value e.g. ec55d3e698d289f2afd663725127bace")  # noqa
-
         data_provided = input("Enter your indicator here:\n")
 
         if check_is_indicator_valid(data_provided):
@@ -127,6 +127,7 @@ def is_indicator_in_database(data_provided):
     else:
         print("Value not found. Add to database")
         add_indicator(data_provided)
+        print(final_result)
 
 
 def add_indicator(data_provided):
@@ -250,4 +251,4 @@ def start_program():
 
 if __name__ == "__main__":
     welcome()
-    start_program()                                                                                                         
+    start_program()

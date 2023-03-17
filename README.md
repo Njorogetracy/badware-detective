@@ -48,9 +48,8 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 ### Existing Features
 
 - Program start:
-  - When the program starts, the badware-detective banner is printed.
+  - When the program starts, the badware-detective banner is printed alongside a set of instructions
   - The program menu is displayed with options for the user to pick the action they'd like to perform.
-  - Once they choose an option, they are given instructions on how to write their input.
   - If option one is choosen, they search for the indicator in the database and get all it's info if found.
   - If it's not in the databse, they are given they option to add it to the database.
   - if they choose option 2, they can add indicator directly to the databse. 
