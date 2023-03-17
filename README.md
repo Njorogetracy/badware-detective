@@ -63,8 +63,9 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 ## Future Development
 
 - I would like to add a validation to avoid entry of duplicate values.
-- I would like to add automation to detect indicator type and prefill the database.
-- I would like to allow for multiple entries in the database.
+- I would like to add a regex exception to exclude IP 0.0.0.0 and 255.255.255.255 from being added
+- I would like to allow for different multiple entries in the database.
+- I would like to allow validation while adding to the databse, to ensure the input is the same.
 
 <br>
 
@@ -100,8 +101,11 @@ This was done on Pep8, no errors were found.
 ## Bugs
   ### Before Deployment
   - There were some bugs while testing the program before deployment:
-  - When exiting the program, it exits and asks for an input:
-    - ![ExitError](assets/images/goodbye-error.png)
+  - When exiting the program, it exits and asks for an input. This was fixed by adding an exit() command to the goodbye function
+  - During search indicator, while adding to db an indicator not found in db, row added twice, this was fixed by removing the print statement
+    in the search indicator function to avoid duplicating the value.
+  - While selection option from the menu, if a value added was not an integer it gave an error: 
+    "ValueError: invalid literal for int() with base 10: 'o'", this was fixed by using a try-except statement.
 
 
 <br>

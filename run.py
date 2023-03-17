@@ -38,12 +38,12 @@ def welcome():
 
     """)
 
-    print("Choose option 1 to query the database for malicious indicators or 2 to add indicator to database.")  # noqa
-    print("The indicator can be a Domain name, IP address(IPV4) or MD5 hash")  # noqa
-    print("Example:")
-    print("Domain name: test.com, blog.mine.com, myexample.net")
-    print("IP address: x.x.x.x where x can be a value between 0 and 255(192.1.2.165)")  # noqa
-    print("MD5 hash: a 32 digit hexadecimal value e.g. ec55d3e698d289f2afd663725127bace\n")  # noqa
+    print("Select '1' to query the database for an indicator, or '2' to add an indicator to the database.")  # noqa
+    print("The indicator can be a domain name, IP address (IPV4) or MD5 hash.")  # noqa
+    print("For example:")
+    print("\tDomain name: test.com, blog.mine.com, myexample.net")
+    print("\tIP address: x.x.x.x, where x can be a value between 0 and 255 (192.1.2.165)")  # noqa
+    print("\tMD5 hash: a 32 digit hexadecimal value, e.g. ec55d3e698d289f2afd663725127bace\n")  # noqa
 
 
 def get_indicator():
@@ -58,6 +58,8 @@ def get_indicator():
 
         if check_is_indicator_valid(data_provided):
             break
+        else:
+            print("Invalid input try again")
 
     return data_provided
 
@@ -105,11 +107,18 @@ def is_indicator_in_database(data_provided):
     result = [sub['Indicator Value'] for sub in datasheet_Values]
     for val in range(len(result)):
         if data_provided == result[val]:
-            print(f'Match found at position {val+1}')
+            print("Match found.")
             break
     else:
-        print("Value not found. Add to database")
-        add_indicator(data_provided)
+        print("Indicator value not found.")
+
+        add_to_database = input("Do you want to add it to the database? (y/n): ")  # noqa
+        if add_to_database.lower() == 'y':
+            add_indicator(data_provided)
+        elif add_to_database.lower() == 'n':
+            print("Value not added to database.")
+        else:
+            print("Invalid input. Please enter 'y' or 'n'.")
 
     final_result = None
     for dictionary in datasheet_Values:
@@ -124,10 +133,6 @@ def is_indicator_in_database(data_provided):
                 goodbye()
         if final_result is not None:
             break
-    else:
-        print("Value not found. Add to database")
-        add_indicator(data_provided)
-        print(final_result)
 
 
 def add_indicator(data_provided):
@@ -136,23 +141,22 @@ def add_indicator(data_provided):
     data to the database
     """
     test_row = ['', '', '']
-    test_indicator = get_indicator()
-    test_row[0] = test_indicator
+    test_row[0] = data_provided
     while True:
-        if re.match(hash_pattern, test_indicator):
+        if re.match(hash_pattern, data_provided):
             test_row[1] = "MD5 hash"
-            file_name = input("Enter the file name. If uknown, enter 'N/A': ")
+            file_name = input("Enter the file name. If unknown, enter 'N/A': ")
             test_row[2] = file_name
             indicators.insert_row(test_row, index=3)
             print("Row added.")
             break
-        elif re.match(dm_pattern, test_indicator):
+        elif re.match(dm_pattern, data_provided):
             test_row[1] = "Domain"
             test_row[2] = "N/A"
             indicators.insert_row(test_row, index=3)
             print("Row added.")
             break
-        elif re.match(ip_pattern, test_indicator):
+        elif re.match(ip_pattern, data_provided):
             test_row[1] = "IP address"
             test_row[2] = "N/A"
             indicators.insert_row(test_row, index=3)
@@ -172,7 +176,6 @@ def search_indicator():
     loaded_indicator = get_indicator()
     check_is_indicator_valid(loaded_indicator)
     is_indicator_in_database(loaded_indicator)
-    add_indicator(loaded_indicator)
     goodbye()
 
 
@@ -201,10 +204,10 @@ def goodbye():
     """
     This function exits the program
     """
-    print("Would you like to exit the program?\n")
+    print("\nWould you like to exit the program?\n")
     exit_answer = input("Enter Y for Yes or N for No\n")
     while True:
-        if exit_answer == "Y":
+        if exit_answer == "Y" or exit_answer == "y":
             print("Thank you for using the program. Goodbye!")
             print(r"""
                  _____           _ _
@@ -213,40 +216,34 @@ def goodbye():
                 |_____|___|___|___|___|_  |___|
                                     |___|
             """)
-            break
-        elif exit_answer == "N":
+            exit()
+        elif exit_answer == "N" or exit_answer == "n":
             start_program()
         else:
-            print("Please enter Y or N\n")
-            exit_answer = input("Enter Y for Yes or N for No\n")
+            exit_answer = input("Wrong input. Enter 'Y' for Yes or 'N' for No.\n")  # noqa
 
 
 def start_program():
     """"
     This function starts the program
     """
-    choice = int(input("""Choose from the options below:
-    1. Search database for indicator
-    2. Add new indicator to database
-    0. Exit program\n
-    """))
     while True:
-        if choice == 1:
-            search_indicator()
-        elif choice == 2:
-            append_indicator()
-            goodbye()
-        elif choice == 0:
-            goodbye()
-            break
-        else:
-            error_handler()
-
-        choice = int(input("""Choose from the options below:
-        1. Search database for indicator
-        2. Add new indicator to database
-        0. Exit program\n
-        """))
+        try:
+            choice = int(input("""Choose from the options below:
+                1. Search database for indicator
+                2. Add new indicator to database
+                0. Exit program\n
+                """))
+            if choice == 1:
+                search_indicator()
+            elif choice == 2:
+                append_indicator()
+            elif choice == 0:
+                goodbye()
+            else:
+                error_handler()
+        except ValueError:
+            print("Invalid input, Please enter valid input")
 
 
 if __name__ == "__main__":
