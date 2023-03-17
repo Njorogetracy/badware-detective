@@ -47,8 +47,12 @@ def get_indicator():
     """
 
     while True:
-        print()
-        print()
+        print("Please add your indicator.")
+        print("The indicator can be a Domain name, IP address(IPV4) or MD5 hash")  # noqa
+        print("Example:")
+        print("Domain name: test.com, blog.mine.com, myexample.net")
+        print("IP address: x.x.x.x where x can be a value between 0 and 255(192.1.2.165)")  # noqa
+        print("MD5 hash: a 32 digit hexadecimal value e.g. ec55d3e698d289f2afd663725127bace")  # noqa
 
         data_provided = input("Enter your indicator here:\n")
 
