@@ -38,7 +38,8 @@ def welcome():
 
     """)
 
-    print("Select '1' to query the database for an indicator, or '2' to add an indicator to the database.")  # noqa
+    print(r"Select '1' to query the database for an indicator, "
+          r"or '2' to add an indicator to the database.")
     print("The indicator can be a domain name, IP address (IPV4) or MD5 hash.")  # noqa
     print("For example:")
     print("\tDomain name: test.com, blog.mine.com, myexample.net")
