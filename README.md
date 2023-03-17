@@ -20,6 +20,7 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 ## [Future Development](#future-development)
 ## [Technologies Used](#technologies-used)
 ## [Testing](#testing)
+## [Bugs](#bugs)
 ## [Deployment](#deployment)
 ## [Credits and Acknowledgements](#credits-and-acknowledgements)
 
@@ -38,7 +39,7 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 <br>
 
 ## FlowChart
- Find logic chart ![here]()
+ Find logic chart ![here](assets/images/logic-chart.png)
 
 <br>
 
@@ -92,7 +93,18 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 ## Testing
 
 This was done on Pep8, no errors were found.
-![Testing Image]()
+![Testing Image](assets/images/validation.png)
+
+<br>
+
+## Bugs
+  ### Before Deployment
+  - There were some bugs while testing the program before deployment:
+  - When exiting the program, it exits and asks for an input:
+    - ![ExitError](assets/images/goodbye-error.png)
+
+
+<br>
 
 ## Deployment
 
