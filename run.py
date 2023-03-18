@@ -155,7 +155,7 @@ def add_indicator(data_provided):
     while True:
         if re.match(hash_pattern, data_provided):
             test_row[1] = "MD5 hash"
-            file_name = input("Enter the file name. If unknown, enter 'N/A': ")
+            file_name = input("Add the file name. If unknown, enter 'N/A':\n")
             test_row[2] = file_name.upper()
             indicators.insert_row(test_row, index=3)
             print("Hash pattern added to database.")
