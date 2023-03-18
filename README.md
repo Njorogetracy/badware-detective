@@ -2,8 +2,6 @@
 
 Created by: Hope Tracy Njoroge
 
-find the link to my project on Heroku here: 
-
 Find the Github repository here:
 [Badware Detective](https://github.com/Njorogetracy/badware-detective)
 
