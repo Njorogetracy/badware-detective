@@ -40,11 +40,20 @@ def welcome():
 
     print(r"Select '1' to query the database for an indicator, "
           r"or '2' to add an indicator to the database.")
-    print("The indicator can be a domain name, IP address (IPV4) or MD5 hash.")  # noqa
+    print(r"The indicator can be a domain name,"
+          r"IP address (IPV4) or MD5 hash.")
     print("For example:")
-    print("\tDomain name: test.com, blog.mine.com, myexample.net")
-    print("\tIP address: x.x.x.x, where x can be a value between 0 and 255 (192.1.2.165)")  # noqa
-    print("\tMD5 hash: a 32 digit hexadecimal value, e.g. ec55d3e698d289f2afd663725127bace\n")  # noqa
+    print("Domain name: test.com, blog.mine.com, myexample.net")
+    print(r"IP address: x.x.x.x, where x, "
+          r"can be a value between 0 and 255 (192.1.2.165)")
+    print(r"MD5 hash: a 32 digit hexadecimal value, "
+          r"e.g. ec55d3e698d289f2afd663725127bace")
+    print(r"Important to note, while adding indicators to the database, "
+          r"IP addresses and domain names do not require file names, "
+          r"since they are atomic indicators i.e. they are standalone "
+          r"MD5 hashes are computed indicators, since their values "
+          r"are computed from thier correspoding files, "
+          r"therefore require file names.")
 
 
 def get_indicator():
@@ -147,21 +156,21 @@ def add_indicator(data_provided):
         if re.match(hash_pattern, data_provided):
             test_row[1] = "MD5 hash"
             file_name = input("Enter the file name. If unknown, enter 'N/A': ")
-            test_row[2] = file_name
+            test_row[2] = file_name.upper()
             indicators.insert_row(test_row, index=3)
-            print("Row added.")
+            print("Hash pattern added to database.")
             break
         elif re.match(dm_pattern, data_provided):
             test_row[1] = "Domain"
             test_row[2] = "N/A"
             indicators.insert_row(test_row, index=3)
-            print("Row added.")
+            print("Domain name added to database.")
             break
         elif re.match(ip_pattern, data_provided):
             test_row[1] = "IP address"
             test_row[2] = "N/A"
             indicators.insert_row(test_row, index=3)
-            print("Row added.")
+            print("IP address added to database.")
             break
         else:
             print("Invalid input.")
