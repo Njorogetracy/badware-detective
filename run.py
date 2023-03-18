@@ -45,14 +45,14 @@ def welcome():
     print("For example:")
     print("Domain name: test.com, blog.mine.com, myexample.net")
     print(r"IP address: x.x.x.x, where x,""\n"
-          r"can be a value between 0 and 255 (192.1.2.165)""\n")
+          r"can be a value between 0 and 255 (192.1.2.165).""\n")
     print(r"MD5 hash: a 32 digit hexadecimal value,""\n"
-          r"e.g. ec55d3e698d289f2afd663725127bace""\n")
+          r"e.g. ec55d3e698d289f2afd663725127bace.""\n")
     print(r"Important to note, while adding indicators to the database,""\n"
           r"IP addresses and domain names do not require file names,""\n"
-          r"since they are atomic indicators i.e. they are standalone""\n"
-          r"MD5 hashes are computed indicators, since their values""\n"
-          r"are computed from thier correspoding files,""\n"
+          r"since they are atomic indicators i.e. they are standalone,""\n"
+          r"MD5 hashes are computed indicators, since their values,""\n"
+          r"are computed from their correspoding files,""\n"
           r"therefore require file names.""\n")
 
 
