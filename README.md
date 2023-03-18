@@ -2,6 +2,9 @@
 
 Created by: Hope Tracy Njoroge
 
+Find the deployed app on heroku here: 
+[Badware Detective](badware-detective.herokuapp.com)
+
 Find the Github repository here:
 [Badware Detective](https://github.com/Njorogetracy/badware-detective)
 
