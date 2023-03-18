@@ -28,7 +28,7 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 <br>
 
 ## User Stories
-### As an app user:
+### As an app owner:
 - I want to build a program that allows users to search for malicious indicators
 - I want to create a database with the indicator values, types and files names
 - I want to allow my program to read the database
