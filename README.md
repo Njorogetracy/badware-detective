@@ -34,7 +34,7 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 - I want to allow my program to read the database
 - I want to create a function that allows users to query the databse for present indicators
 - I want to create a function that allows users to add indicators to the database
-### AS a user:
+### As a user:
 - I want to be able to run the program
 - I want to understand what to do through the instructions
 - I want to choose what to do when I start the program
@@ -63,14 +63,14 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
   - if they choose option 2, they can add indicator directly to the databse. 
   - Afterwhich, they are able to exit the program.
   - A goodbye message is printed after exiting the program. 
-    - Start program
-      ![start program](assets/images/start-program.png)
-    - Search function
-      ![search function](assets/images/search-function.png)
-    - Add function
-      ![add function](assets/images/add-function.png)
-    - End program
-      ![end program](assets/images/goodbye.png)
+    - Start program:
+      - ![start program](assets/images/start-program.png)
+    - Search function:
+      - ![search function](assets/images/search-function.png)
+    - Add function:
+      - ![add function](assets/images/add-function.png)
+    - End program:
+      - ![end program](assets/images/goodbye.png)
 
 <br>
 
@@ -86,7 +86,7 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 ## Technologies Used
 - Git - Was used for version control, the Gitpod terminal to commit and push to GitHub.
 
-- [GitHub](https://github.com/) - Was used to store the project code 
+- [GitHub](https://github.com/) - Was used to store the project code. 
 
 - [Lucid](https://lucid.app/documents#/dashboard) -  Was used to create the logic flowchart.
 
@@ -96,18 +96,18 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 
 - [Regex101](https://regex101.com/r/fU2d35/1) - Used to verify that the regex patterns are correct.
 
-- [Google Cloud API](https://cloud.google.com/apis) - API service used
+- [Google Cloud API](https://cloud.google.com/apis) - API service used.
 
-- [Pep8](https://pep8ci.herokuapp.com/) - Validation service
+- [Pep8](https://pep8ci.herokuapp.com/) - Validation service.
 
-- Googlesheets - Used as the database
+- Googlesheets - Used as the database.
 
 
 <br>
 
 ## Testing
 ### Pep8 validation
-This was done on Pep8, no errors were found.
+This was done on Pep8, no errors were found:
 ![Testing Image](assets/images/validation.png)
 
 ### Manual testing
@@ -122,17 +122,17 @@ This was done on Pep8, no errors were found.
 
 ## Bugs
   ### Fixed Bugs
-  - Exit error
+  - Exit error:
     - Expected - Exit program is expected to exit program when user inputs exit
     - Testing - Tested feature by inputing exit
     - Result - program exits and requests for input of value after exiting
     - Fix - added an exit function to the code to prompt program exit when user wants to exit.
-  - Adding indicator to databse
+  - Adding indicator to databse:
     - Expected - Expected to add input to database once
     - Testing - Tested by inputting value and prompting add to database
     - Result - Adds 2 values to database
     - Fix - Done by removing duplicate input statements
-  - ValueError from menu options
+  - ValueError from menu options:
     - Expected - Raise error when input other than integer is entered
     - Testing - Added a letter and character
     - Result - "ValueError: invalid literal for int() with base 10: 'o'" printed to terminal
@@ -165,7 +165,7 @@ This was done on Pep8, no errors were found.
 - Click the button "serch" and then click "connect"
 - Choose between automatic deployment or manual deplpyment.
 - If you choose manual, wait for it to finish.
-- Now click the button "view"
+- Now click the button "view".
 
 ### Forking the Github repository
 To make a copy of the original repository on a GitHub account, ao as to view and/or make changes without affecting the original repository use the following steps:
