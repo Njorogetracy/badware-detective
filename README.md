@@ -7,6 +7,9 @@ find the link to my project on Heroku here:
 Find the Github repository here:
 [Badware Detective](https://github.com/Njorogetracy/badware-detective)
 
+Find the link to google sheet database here: 
+[Googlesheet](https://docs.google.com/spreadsheets/d/1xRLNgJ16KS3MstorSBd0b7VMJsNOLLlUHf1vLBsQLb4/edit?usp=sharing)
+
 # Introduction
 
 This is an imagined program for a Cyber Security organization, in partial fulfilment with the Code Institute Full Stack Software Development course. It is targeted towards the Security Analysts, to check which malicious indicators are present in the company’s database and allow them to add any malicious indicators if not present to the database to protect the organization’s information assets. 
@@ -62,7 +65,14 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
   - if they choose option 2, they can add indicator directly to the databse. 
   - Afterwhich, they are able to exit the program.
   - A goodbye message is printed after exiting the program. 
-
+    - Start program
+      ![start program](assets/images/start-program.png)
+    - Search function
+      ![search function](assets/images/search-function.png)
+    - Add function
+      ![add function](assets/images/add-function.png)
+    - End program
+      ![end program](assets/images/goodbye.png)
 
 <br>
 
@@ -98,19 +108,27 @@ This is an imagined program for a Cyber Security organization, in partial fulfil
 <br>
 
 ## Testing
-
+### Pep8 validation
 This was done on Pep8, no errors were found.
 ![Testing Image](assets/images/validation.png)
+
+### Manual testing
+| Function | Testing | Completed |
+|----------|---------| ----------|
+| start program | starts program and loads instructions | yes |
+| search database | searches database and returns indicator information | yes |
+| add to database | adds indicator and its information to database | yes |
+| end program | exits the program | yes|
 
 <br>
 
 ## Bugs
   ### Fixed Bugs
   - Exit error
-   - Expected - Exit program is expected to exit program when user inputs exit
-   - Testing - Tested feature by inputing exit
-   - Result - program exits and requests for input of value after exiting
-   - Fix - added an exit function to the code to prompt program exit when user wants to exit.
+    - Expected - Exit program is expected to exit program when user inputs exit
+    - Testing - Tested feature by inputing exit
+    - Result - program exits and requests for input of value after exiting
+    - Fix - added an exit function to the code to prompt program exit when user wants to exit.
   - Adding indicator to databse
     - Expected - Expected to add input to database once
     - Testing - Tested by inputting value and prompting add to database
@@ -127,25 +145,7 @@ This was done on Pep8, no errors were found.
 
 <br>
 
-## Deployment
-
-  ###  Deployment via gitpod
-- Log into GitHub.
-- Make a repository
-- Click the green button at the top of the page that says Gitpod.
-- After letting Gitpod load an alert pops up on the top of the screen, click cancel.
-- Then click the button that says More Actions.
-- Hereafter click Open in Browser.
-- Now right click with your mouse over the big box on the left that has your repository name over it.
-- Click new file.
-- Then make an index.html file. 
-- Go to the top of the index file and click ! and enter. This will make a start template.
-- Make a basic structure for your index page.
-- Click on terminal at the bottom of the page.
-- write 'git add .'
-- Then for your first commit write 'git commit -m "Initial commit".
-- Hereafter write 'git push'.
-- Your code have now been pushed back and saved on your GitHub repository.
+## Deployment and development
 
   ### Deployment via Heroku
 - Log into your Heroku page on [Heroku website](https://www.heroku.com)
@@ -168,6 +168,23 @@ This was done on Pep8, no errors were found.
 - Choose between automatic deployment or manual deplpyment.
 - If you choose manual, wait for it to finish.
 - Now click the button "view"
+
+### Forking the Github repository
+To make a copy of the original repository on a GitHub account, ao as to view and/or make changes without affecting the original repository use the following steps:
+
+- Log in to GitHub and locate the repository badware-detective
+- At the top of the Repository (not the top of the page) just above the "Settings" Button on the menu, locate the "Fork" Button.
+- You should now have a copy of the original repository in your GitHub account.
+- [Deployed Site](https://github.com/Njorogetracy/badware-detective) 
+
+### Cloning the Github Repository
+To clone the original repository:
+
+- Log in to GitHub and locate the repository badware-detective
+- Above the list of files(top right of screen), click Code
+- Copy the URL using HTTPS, under "HTTPS"
+- Type git clone in your terminal, and then paste the URL you copied
+- Press Enter to create your local clone.
 
 <br>
 
