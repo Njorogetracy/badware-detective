@@ -38,22 +38,22 @@ def welcome():
 
     """)
 
-    print(r"Select '1' to query the database for an indicator, "
-          r"or '2' to add an indicator to the database.")
-    print(r"The indicator can be a domain name,"
-          r"IP address (IPV4) or MD5 hash.")
+    print(r"Select '1' to query the database for an indicator,""\n"
+          r"or '2' to add an indicator to the database.""\n")
+    print(r"The indicator can be a domain name,""\n"
+          r"IP address (IPV4) or MD5 hash.""\n")
     print("For example:")
     print("Domain name: test.com, blog.mine.com, myexample.net")
-    print(r"IP address: x.x.x.x, where x, "
-          r"can be a value between 0 and 255 (192.1.2.165)")
-    print(r"MD5 hash: a 32 digit hexadecimal value, "
-          r"e.g. ec55d3e698d289f2afd663725127bace")
-    print(r"Important to note, while adding indicators to the database, "
-          r"IP addresses and domain names do not require file names, "
-          r"since they are atomic indicators i.e. they are standalone "
-          r"MD5 hashes are computed indicators, since their values "
-          r"are computed from thier correspoding files, "
-          r"therefore require file names.")
+    print(r"IP address: x.x.x.x, where x,""\n"
+          r"can be a value between 0 and 255 (192.1.2.165)""\n")
+    print(r"MD5 hash: a 32 digit hexadecimal value,""\n"
+          r"e.g. ec55d3e698d289f2afd663725127bace""\n")
+    print(r"Important to note, while adding indicators to the database,""\n"
+          r"IP addresses and domain names do not require file names,""\n"
+          r"since they are atomic indicators i.e. they are standalone""\n"
+          r"MD5 hashes are computed indicators, since their values""\n"
+          r"are computed from thier correspoding files,""\n"
+          r"therefore require file names.""\n")
 
 
 def get_indicator():
