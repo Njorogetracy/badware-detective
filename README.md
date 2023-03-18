@@ -105,14 +105,25 @@ This was done on Pep8, no errors were found.
 <br>
 
 ## Bugs
-  ### Before Deployment
-  - There were some bugs while testing the program before deployment:
-  - When exiting the program, it exits and asks for an input. This was fixed by adding an exit() command to the goodbye function
-  - During search indicator, while adding to db an indicator not found in db, row added twice, this was fixed by removing the print statement
-    in the search indicator function to avoid duplicating the value.
-  - While selection option from the menu, if a value added was not an integer it gave an error: 
-    "ValueError: invalid literal for int() with base 10: 'o'", this was fixed by using a try-except statement.
+  ### Fixed Bugs
+  - Exit error
+   - Expected - Exit program is expected to exit program when user inputs exit
+   - Testing - Tested feature by inputing exit
+   - Result - program exits and requests for input of value after exiting
+   - Fix - added an exit function to the code to prompt program exit when user wants to exit.
+  - Adding indicator to databse
+    - Expected - Expected to add input to database once
+    - Testing - Tested by inputting value and prompting add to database
+    - Result - Adds 2 values to database
+    - Fix - Done by removing duplicate input statements
+  - ValueError from menu options
+    - Expected - Raise error when input other than integer is entered
+    - Testing - Added a letter and character
+    - Result - "ValueError: invalid literal for int() with base 10: 'o'" printed to terminal
+    - Fix - Adding a try and except statement
 
+  ### Other Bugs
+   - At the time of writing the readme, no known errors were found
 
 <br>
 
